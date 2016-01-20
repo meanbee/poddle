@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPodcastEpisodeName extends Migration
+class AddPodcastTimestamps extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class AddPodcastEpisodeName extends Migration
     public function up()
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            $table->string('podcast_name');
-            $table->string('episode_name');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +25,8 @@ class AddPodcastEpisodeName extends Migration
     public function down()
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            $table->removeColumn('podcast_name');
-            $table->removeColumn('episode_name');
+            $table->removeColumn('created_at');
+            $table->removeColumn('updated_at');
         });
     }
 }
