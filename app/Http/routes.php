@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@showSubmit']);
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
