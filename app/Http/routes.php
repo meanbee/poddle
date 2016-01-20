@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@showSubmit']);
+Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@getSubmit']);
+
+Route::post('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@postSubmit']);
 
 /*
 |--------------------------------------------------------------------------
