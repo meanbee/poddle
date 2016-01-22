@@ -25,6 +25,9 @@ class AddPostcastFileNames extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('podcasts', function (Blueprint $table) {
+            $table->removeColumn('original_file');
+            $table->removeColumn('converted_file');
+        });
     }
 }
