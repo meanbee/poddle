@@ -31,21 +31,21 @@ class DownloadMp3
     public function run(){
 
         /** @var Podcast[] $podcasts */
-        $podcasts = Podcast::where('status', '=', Podcast::STATUS_NEW)->get();
+        $podcasts = Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_NEW)->get();
 
         foreach ($podcasts as $podcast) {
 
-            $url = $podcast->url;
+            $url = $podcast->getAttribute(Podcast::COLUMN_URL);
             $filename = last(explode('/', $url));
             $path = storage_path('app/' . $filename);
 
             $response = $this->httpClient->request('GET', $url, ['sink' => $path]);
 
             if ($response->getStatusCode() == 200 ) {
-                $podcast->status = Podcast::STATUS_DOWNLOADED;
-                $podcast->original_file = $filename;
+                $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_DOWNLOADED);
+                $podcast->setAttribute(Podcast::COLUMN_ORIGINAL_FILE, $filename);
             } else {
-                $podcast->status = Podcast::STATUS_DOWNLOAD_FAILED;
+                $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_DOWNLOAD_FAILED);
             }
 
             $podcast->save();
