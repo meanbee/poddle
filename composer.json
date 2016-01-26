@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "guzzlehttp/guzzle": "^6.1"
+        "brideo/ibm-watson-php-library": "dev-develop"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -49,5 +49,9 @@
     },
     "config": {
         "preferred-install": "dist"
-    }
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url":  "git@github.com:brideo/IBM-Watson-PHP-Library.git"
+    }]
 }

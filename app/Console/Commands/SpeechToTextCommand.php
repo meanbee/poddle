@@ -3,9 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\Podcast;
+use Brideo\IbmWatson\Ibm\Config\Config;
+use Brideo\IbmWatson\Ibm\SpeechToText;
 use Exception;
 use Illuminate\Console\Command;
-use App\Services\Ibm\SpeechToText as SpeechToTextService;
 
 class SpeechToTextCommand extends Command
 {
@@ -16,13 +17,22 @@ class SpeechToTextCommand extends Command
     protected $name = 'ibm:speechToText';
 
     /**
-     * @var SpeechToTextService
+     * @var SpeechToText
      */
     protected $speechToText;
 
-    public function __construct(SpeechToTextService $speechToText = null)
+    public function __construct(SpeechToText $speechToText = null)
     {
-        $this->speechToText = $speechToText ?: new SpeechToTextService();
+        if (!$speechToText) {
+            $config = new Config();
+            $config->setUsername(env('IBM_SPEECH_TO_TEXT_USERNAME'));
+            $config->setPassword(env('IBM_SPEECH_TO_TEXT_PASSWORD'));
+
+            $speechToText = new SpeechToText($config);
+        }
+
+        $this->speechToText = $speechToText;
+
         parent::__construct();
     }
 
@@ -37,8 +47,7 @@ class SpeechToTextCommand extends Command
 
             /** @var Podcast $podcast */
             $fileName = $podcast->getAttribute(Podcast::COLUMN_CONVERTED_FILE);
-
-            $this->speechToText->recognize($fileName);
+            $this->speechToText->recognize(base_path("resources/podcasts/{$fileName}"));
 
             try {
 
