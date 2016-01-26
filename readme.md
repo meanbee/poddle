@@ -1,27 +1,35 @@
-## Laravel PHP Framework
+# Podcast Show Notes
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This project has multiple aims:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+- Make podcasts more accessible by providing a text-version of episodes.
+- Provide show notes to reduce podcast producing times
+- Provide improved search ability to discover relevant podcasts.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+This project was built during the [Watson Dev Post Hack](http://watson.devpost.com/).
 
-## Official Documentation
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Architecture
 
-## Contributing
+The system is architecture in a factory-style conveyor belt system.  Each podcast has a status and then a particular
+service of the system is responsible for moving the podcast from one state to the next. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### State Flow
 
-## Security Vulnerabilities
+- New
+- Downloaded
+- File Converted
+- Audio to Text Converted
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Each state (apart from new) has a failure state which is used to show if a podcast failed at this state. The service
+responsible for this process can decide whether to retry podcasts in this process but by default these are end states. 
 
-### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+## Contributors
+
+- [Nathan McBride](https://twitter.com/brideoweb)
+- [Tom Robertshaw](https://twitter.com/bobbyshaw)
+
+## License
+
+This software is open-source and licensed under the [MIT license](http://opensource.org/licenses/MIT)
