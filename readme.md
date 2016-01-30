@@ -8,6 +8,10 @@ This project has multiple aims:
 
 This project was built during the [Watson Dev Post Hack](http://watson.devpost.com/).
 
+## Dependencies
+
+- libav
+- opus-tools
 
 ## Architecture
 
