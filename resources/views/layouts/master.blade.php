@@ -39,13 +39,6 @@
     <header role="banner">
         <div class="header-inner">
             <a class="logo" href="{{ URL::to('') }}"><h1>Podcast Show Notes</h1></a>
-
-            <nav role="navigation" id="navigation">
-                <ul role="menubar" class="navigation-list">
-                    <li><a href="{{ route('cms.home') }}" role="menuitem">Home</a></li>
-                    <li><a href="http://github.com/meanbee/podcast-show-notes" role="menuitem">Github</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
     <main role="main">
@@ -64,7 +57,13 @@
     </main>
     <footer role="contentinfo">
         <div class="footer-inner">
-            <p>Created by <a href="http://brideo.co.uk/">Nathan McBride</a>&amp; <a href="http://tomrobertshaw.net/">Tom Robertshaw</a></p>
+            <p>Created by <a href="http://brideo.co.uk/">Nathan McBride</a> &amp; <a href="http://tomrobertshaw.net/">Tom Robertshaw</a>.</p>
+            <nav role="navigation" id="navigation">
+                <ul role="menubar" class="navigation-list">
+                    <li><a href="{{ route('cms.home') }}" role="menuitem">Home</a></li>
+                    <li><a href="http://github.com/meanbee/podcast-show-notes" role="menuitem">Github</a></li>
+                </ul>
+            </nav>
         </div>
     </footer>
     <script type="text/javascript" src="{{ asset('assets/js/main.min.js') }}"></script>
