@@ -1,5 +1,5 @@
 header[role="banner"] {
-    border-bottom: 2px solid $backgroundGreyBorder;
+    padding: 2em 0;
 
     ul {
         list-style: none;
@@ -7,23 +7,16 @@ header[role="banner"] {
         padding: 0;
     }
 
-    nav[role="navigation"] {
+    .logo {
+        @include retina-image('../images/logo', 100px 100px);
+        background-repeat: no-repeat;
+        background-position: left center;
+        display: inline-block;
+        padding: 2em 2em 2em 8em;
+        margin: 0 auto;
 
-        font-size: em(13);
-        text-transform: uppercase;
-        text-align: center;
-
-        li {
-            display: inline-block;
-            padding: 0.5em 1em;
-        }
-
-        @include modular-bp(em(800)) {
-
-            li {
-                padding: 0.5em 2em;
-
-            }
+        h1 {
+            margin: 0;
         }
     }
 }
@@ -47,28 +40,31 @@ header[role="banner"] {
 }
 
 footer[role="contentinfo"] {
-    background: $yellowGrey;
-    color: $darkGrey;
     min-height: em(140);
 
-    h4 {
-        color: $white;
+    p {
+        display: inline-block;
+        font-size: em(13);
     }
 
-    [type="submit"] {
-        padding: 0.5em;
+    nav[role="navigation"] {
+        font-size: em(13);
+        float: right;
 
-        &:hover {
-            background: $white;
-            color: $blue;
+
+        li {
+            display: inline-block;
+            padding: 0.5em 1em;
+        }
+
+        @include modular-bp(em(800)) {
+
+            li {
+                padding: 0.5em 2em;
+
+            }
         }
     }
-
-    [type="text"],
-    [type="email"] {
-        padding: 0.4em 0.2em 0.3em;
-    }
-
 }
 
 %grid {

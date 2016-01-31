@@ -1,8 +1,8 @@
 html,
 body {
     background: $white;
-    font: 400 16px/20px Helvetica Arial;
-    color: $darkGrey;
+    font: 400 16px/20px $montserrat Arial;
+    color: $greyBlue;
     -webkit-font-smoothing: antialiased;
     font-smooth: always;
     -webkit-text-size-adjust: 100%;
@@ -38,9 +38,9 @@ h3,
 h4,
 h5,
 h6 {
+    color: $seaBlue;
     margin: 1rem 0;
     overflow-wrap: break-word;
-    text-transform: uppercase;
 }
 
 h1 {
@@ -50,7 +50,6 @@ h1 {
 }
 
 h2 {
-    color: #a9abae;
     @include rem(font-size, 30px);
     font-weight: 300;
     line-height: 1.3;
@@ -63,7 +62,6 @@ h3 {
 }
 
 h4 {
-    color: #a9abae;
     @include rem(font-size, 18px);
     letter-spacing: 0.05em;
     line-height: 1.4;
@@ -87,7 +85,7 @@ em {
 
 
 a {
-    color: $darkGrey;
+    color: $red;
 
     &:focus,
     &:hover {
@@ -156,7 +154,7 @@ iframe {
 }
 
 %button {
-    background: $lightBlue;
+    background: $skyBlue;
     border: 0;
     border-radius: 0;
     color: #FFF;
@@ -164,11 +162,10 @@ iframe {
     margin: 1em 0;
     padding: 1em 2em;
     text-decoration: none;
-    text-transform: uppercase;
     @include transition(all 0.2s ease-in-out);
 
     &:hover {
-        background: $blue;
+        background: $seaBlue;
         text-decoration: none;
     }
 
@@ -187,9 +184,8 @@ button,
 [type="text"],
 [type="email"],
 [type="password"] {
-    border: 1px solid $backgroundGrey;
+    border: 1px solid $greyBlue;
     padding: 0.5em 0.2em;
     margin: 0.2em 0;
     min-width: 20em;
-
 }
