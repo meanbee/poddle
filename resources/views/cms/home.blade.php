@@ -5,8 +5,7 @@
 
 @section('content')
 <section class="main-inner">
-    <div class="pocket-login-promo">
-        <h1>Podcast Show Notes</h1>
+    <div class="homepage-promo">
         <p>Bringing accessibility to Podcasts with transcripts, concept summary and search indexing</p>
 </section>
 @stop
