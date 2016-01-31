@@ -35,6 +35,8 @@ We use gulp independently of Elixir to manage the frontend.  To re-compile:
 
     cd public/assets/
     gulp styles
+    gulp images
+    gulp watch
 
 ## Contributors
 
