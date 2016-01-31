@@ -3,3 +3,4 @@
 Homestead.yaml
 Homestead.json
 .env
+/public/assets/node_modules
