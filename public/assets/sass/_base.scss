@@ -154,7 +154,7 @@ iframe {
 }
 
 %button {
-    background: $skyBlue;
+    background: $red;
     border: 0;
     border-radius: 0;
     color: #FFF;
@@ -165,7 +165,7 @@ iframe {
     @include transition(all 0.2s ease-in-out);
 
     &:hover {
-        background: $seaBlue;
+        background: darken($red, 8);
         text-decoration: none;
     }
 
