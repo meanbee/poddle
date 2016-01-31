@@ -7,13 +7,14 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass');
     neat = require('node-neat').includePaths;
+    normalize = require('node-normalize-scss').includePaths;
 
 // Task Styles
 gulp.task('styles', function () {
     gulp.src('sass/styles.scss')
         .pipe(plumber())
         .pipe(sass({
-            includePaths: ['styles'].concat(neat)
+            includePaths: ['sass'].concat(neat, normalize)
         }))
         .pipe(cssnano({keepBreaks:true}))
         .pipe(gulp.dest('css'));
