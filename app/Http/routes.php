@@ -13,6 +13,10 @@
 Route::get('/', ['as' => 'cms.home', 'uses' => 'CmsController@home']);
 
 
+Route::get('/search', ['as' => 'cms.search', 'uses' => 'CmsController@search']);
+
+Route::post('/search/result', ['as' => 'podcast.search.result', 'uses' => 'PodcastController@searchResult']);
+
 Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@getSubmit']);
 
 Route::post('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@postSubmit']);
