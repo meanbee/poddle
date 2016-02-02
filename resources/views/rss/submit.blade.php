@@ -6,9 +6,9 @@
 @section('content')
     <section class="main-inner">
         <div class="homepage-promo">
-            <h1>Add Podcast</h1>
+            <h1>Add Podcast RSS</h1>
 
-            @include('partials/forms/podcast')
+            @include('partials/forms/rss')
         </div>
     </section>
 @stop
