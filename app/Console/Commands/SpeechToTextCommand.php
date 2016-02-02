@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Podcast;
-use Brideo\IbmWatson\Ibm\Config\Config;
+use Brideo\IbmWatson\Ibm\Config;
 use Brideo\IbmWatson\Ibm\SpeechToText;
 use Exception;
 use Illuminate\Console\Command;
