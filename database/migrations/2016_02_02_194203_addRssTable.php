@@ -14,15 +14,15 @@ class AddRssTable extends Migration
     {
         Schema::create('rss', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('url');
-            $table->unsignedInteger('podcast_id');
-            $table->string('link');
-            $table->string('name');
-            $table->string('description');
-            $table->string('author');
-            $table->string('image');
-            $table->dateTime('build_date');
-            $table->string('category');
+            $table->string('url')->unique();
+            $table->unsignedInteger('podcast_id')->nullable();
+            $table->string('link')->nullable();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->string('author')->nullable();
+            $table->string('image')->nullable();
+            $table->dateTime('build_date')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
 
             $table->foreign('podcast_id')->references('id')->on('podcasts');
