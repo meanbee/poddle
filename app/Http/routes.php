@@ -10,12 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', ['as' => 'cms.home', 'uses' => 'CmsController@home']);
 
-
-Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@getSubmit']);
-
-Route::post('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@postSubmit']);
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +24,12 @@ Route::post('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastCont
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::get('/', ['as' => 'cms.home', 'uses' => 'CmsController@home']);
+
+    Route::get('/rss/submit', ['as' => 'rss.submit', 'uses' => 'RssController@getSubmit']);
+    Route::post('/rss/submit', ['as' => 'rss.submit', 'uses' => 'RssController@postSubmit']);
+
+    Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@getSubmit']);
+    Route::post('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@postSubmit']);
 });
