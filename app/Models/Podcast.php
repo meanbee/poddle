@@ -45,4 +45,12 @@ class Podcast extends Model
      * @var array
      */
     protected $guarded = [self::COLUMN_ID];
+
+    /**
+     * Get RSS feed of podcast.
+     */
+    public function getRss()
+    {
+        return $this->hasOne('App\Models\Rss');
+    }
 }
