@@ -10,10 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', ['as' => 'cms.home', 'uses' => 'CmsController@home']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@getSubmit']);
 

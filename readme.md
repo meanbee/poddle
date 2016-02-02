@@ -8,10 +8,14 @@ This project has multiple aims:
 
 This project was built during the [Watson Dev Post Hack](http://watson.devpost.com/).
 
+## Dependencies
 
-## Architecture
+- libav
+- opus-tools
 
-The system is architecture in a factory-style conveyor belt system.  Each podcast has a status and then a particular
+## System Architecture
+
+The system is architected in a factory-style conveyor belt system.  Each podcast has a status and then a particular
 service of the system is responsible for moving the podcast from one state to the next. 
 
 ### State Flow
@@ -22,8 +26,17 @@ service of the system is responsible for moving the podcast from one state to th
 - Audio to Text Converted
 
 Each state (apart from new) has a failure state which is used to show if a podcast failed at this state. The service
-responsible for this process can decide whether to retry podcasts in this process but by default these are end states. 
+responsible for this process can decide whether to retry podcasts in this process but by default these are end states.
+ 
+ 
+## Frontend
 
+We use gulp independently of Elixir to manage the frontend.  To re-compile: 
+
+    cd public/assets/
+    gulp styles
+    gulp images
+    gulp watch
 
 ## Contributors
 

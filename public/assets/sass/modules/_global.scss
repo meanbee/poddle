@@ -1,0 +1,19 @@
+header[role="banner"] {
+    background: $greyBlue;
+    color: $white;
+
+    a {
+        color: $white;
+    }
+}
+
+footer[role="contentinfo"] {
+    background: $seaBlue;
+    color: $white;
+
+    a,
+    h4 {
+        color: $white;
+    }
+
+}

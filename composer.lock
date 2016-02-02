@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9248e1b7580c5aac595d7da3752b7ce4",
-    "content-hash": "c6cc2200fff70328af7db07db77dc3ed",
+    "hash": "925cfc1b838a32cd99835cd718925188",
+    "content-hash": "c00d26a8350d27a1907f5dfc9eadaa11",
     "packages": [
         {
             "name": "brideo/ibm-watson-php-library",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/brideo/IBM-Watson-PHP-Library.git",
-                "reference": "4f3fd061132b1b40e41b53b4cb08d24827da6e2d"
+                "reference": "a3004eba55bf041ed445c7ed0c0c91d08fb8b865"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brideo/IBM-Watson-PHP-Library/zipball/4f3fd061132b1b40e41b53b4cb08d24827da6e2d",
-                "reference": "4f3fd061132b1b40e41b53b4cb08d24827da6e2d",
+                "url": "https://api.github.com/repos/brideo/IBM-Watson-PHP-Library/zipball/a3004eba55bf041ed445c7ed0c0c91d08fb8b865",
+                "reference": "a3004eba55bf041ed445c7ed0c0c91d08fb8b865",
                 "shasum": ""
             },
             "require": {
@@ -41,7 +41,7 @@
                 "source": "https://github.com/brideo/IBM-Watson-PHP-Library/tree/develop",
                 "issues": "https://github.com/brideo/IBM-Watson-PHP-Library/issues"
             },
-            "time": "2016-01-26 17:19:16"
+            "time": "2016-01-27 23:21:50"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -804,23 +804,23 @@
         },
         {
             "name": "mtdowling/cron-expression",
-            "version": "v1.0.4",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/cron-expression.git",
-                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412"
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/fd92e883195e5dfa77720b1868cf084b08be4412",
-                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412",
+                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "~4.0|~5.0"
             },
             "type": "library",
             "autoload": {
@@ -844,7 +844,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2015-01-11 23:07:46"
+            "time": "2016-01-26 21:23:30"
         },
         {
             "name": "nesbot/carbon",
@@ -946,16 +946,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.5",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7"
+                "reference": "e6f80ab77885151908d0ec743689ca700886e8b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
-                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/e6f80ab77885151908d0ec743689ca700886e8b0",
+                "reference": "e6f80ab77885151908d0ec743689ca700886e8b0",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +990,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-01-06 13:31:20"
+            "time": "2016-01-29 16:19:52"
         },
         {
             "name": "psr/http-message",
@@ -2184,6 +2184,50 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v91",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "381d12e06534b7d059d42407c96588826d5e4ab4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/381d12e06534b7d059d42407c96588826d5e4ab4",
+                "reference": "381d12e06534b7d059d42407c96588826d5e4ab4",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "http://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2016-01-08 00:59:08"
         },
         {
             "name": "mockery/mockery",
