@@ -47,7 +47,7 @@ class SpeechToTextCommand extends Command
 
             /** @var Podcast $podcast */
             $fileName = $podcast->getAttribute(Podcast::COLUMN_CONVERTED_FILE);
-            $this->speechToText->recognize(base_path("resources/podcasts/{$fileName}"));
+            $this->speechToText->recognize(storage_path("app/{$fileName}"));
 
             try {
 
