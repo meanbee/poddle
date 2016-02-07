@@ -7,7 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "brideo/ibm-watson-php-library": "dev-master"
+        "brideo/ibm-watson-php-library": "dev-master",
+        "zetacomponents/feed": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

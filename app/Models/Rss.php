@@ -19,6 +19,7 @@ class Rss extends Model
     const COLUMN_IMAGE = 'image';
     const COLUMN_BUILD_DATE = 'build_date';
     const COLUMN_CATEGORY = 'category';
+    const COLUMN_LAST_SYNC = 'last_sync';
 
     /**
      * The attributes that are mass assignable.
