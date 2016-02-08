@@ -7,6 +7,10 @@ use App\Models\Podcast;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use ezcFeed;
+use ezcFeedParseErrorException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
 use Mockery\CountValidator\Exception;
 
 /**
@@ -40,13 +44,20 @@ class RefreshFeed
                 /** @var Rss $rss */
                 foreach ($rssChunk as $rss) {
 
-                    $response = $this->httpClient->get($rss->getAttribute(Rss::COLUMN_URL));
-                    $contents = $response->getBody()->getContents();
+                    try {
+                        $response = $this->httpClient->get($rss->getAttribute(Rss::COLUMN_URL));
+                        $contents = $response->getBody()->getContents();
 
-                    if ($response->getStatusCode() != 200 || $contents == '') {
-                        $this->refreshFinish($rss);
+                        if ($response->getStatusCode() != 200 || $contents == '') {
+                            $this->refreshFinish($rss);
+                            continue;
+                        }
+                    } catch (ConnectException $e) {
+                        continue;
+                    } catch (RequestException $e) {
                         continue;
                     }
+
 
                     try {
                         $feed = ezcFeed::parseContent($contents);
@@ -55,7 +66,10 @@ class RefreshFeed
                         $this->checkForNewEpisodes($rss, $feed);
                         $this->refreshFinish($rss);
 
+                    } catch (ezcFeedParseErrorException $e) {
+                        continue;
                     } catch (Exception $e) {
+                        continue;
                     }
                 }
             });
@@ -71,12 +85,36 @@ class RefreshFeed
     {
         $title = isset($feed->title) ? $feed->title : null;
         $description = isset($feed->description) ? $feed->description : null;
-        $author = isset($feed->author) ? $feed->author : null;
+
+        $author = null;
+        if (isset($feed->author)) {
+            if (isset($feed->author->name)) {
+                $author = $feed->author->name;
+            } elseif (is_array($feed->author)) {
+                $author = $feed->author[0]->name;
+            }
+        }
+
         $category = isset($feed->category) ? $feed->category : null;
+
+        if (is_array($category)) {
+            $categories = array();
+            foreach ( $category as $childCategory ) {
+                $categories[] = $childCategory->term;
+                if (isset($childCategory->category)) {
+                    $categories[] = $childCategory->category->term;
+                }
+            }
+
+            $categories = array_unique($categories);
+            $category = json_encode(array_values($categories));
+        }
+
         $image = isset($feed->image->url) ? $feed->image->url : null;
 
         $link = isset($feed->link) ? $feed->link[0]->href : null;
         $buildDate = isset($feed->updated->date) ? $feed->updated->date : null;
+
 
         if ($feed->hasModule('iTunes')) {
             $itunes = $feed->iTunes;
@@ -97,6 +135,7 @@ class RefreshFeed
             }
         }
 
+
         $rss->setAttribute(Rss::COLUMN_NAME, $title);
         $rss->setAttribute(Rss::COLUMN_DESCRIPTION, $description);
         $rss->setAttribute(Rss::COLUMN_AUTHOR, $author);
@@ -114,6 +153,10 @@ class RefreshFeed
      */
     private function checkForNewEpisodes($rss, $feed)
     {
+        if (!isset($feed->item)) {
+            return;
+        }
+
         foreach ($feed->item as $item) {
 
             $publishedDate = isset( $item->published ) ? $item->published->date : null;
@@ -127,7 +170,16 @@ class RefreshFeed
             $guid = isset($item->id) ? $item->id : null;
             $title = isset($item->title) ? $item->title : null;
             $description = isset($item->description) ? $item->description : null;
-            $author = isset($item->author) && isset($item->author->name) ? $item->author->name : null;
+
+            $author = null;
+            if (isset($item->author)) {
+                if (isset($item->author->name)) {
+                    $author = $item->author->name;
+                } elseif (is_array($item->author)) {
+                    $author = $item->author[0]->name;
+                }
+            }
+
             $link = isset($item->link) ? $item->link[0]->href : null;
 
             $type = null;
