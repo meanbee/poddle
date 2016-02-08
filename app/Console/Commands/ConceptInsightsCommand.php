@@ -62,6 +62,7 @@ class ConceptInsightsCommand extends Command
                 $document = $this->corpus->getDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
 
                 $data = [
+                    'id'          => $podcast->getAttribute(Podcast::COLUMN_ID),
                     'label'       => $podcast->getAttribute(Podcast::COLUMN_PODCAST_NAME),
                     'parts'       => [
                         [
@@ -71,7 +72,7 @@ class ConceptInsightsCommand extends Command
                         ]
                     ],
                     'user_fields' => [
-                        $podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME) => $podcast->getMetaData()
+                        $podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME) => $podcast->getAttribute(Podcast::COLUMN_META)
                     ],
                 ];
 
