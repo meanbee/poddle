@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<opml version="1.0">
+  <head>
+    <title>Pocket Casts Feeds</title>
+  </head>
+  <body>
+    <outline text="feeds">
+      <outline type="rss" text="Windows Weekly (MP3)" xmlUrl="http://feeds.twit.tv/ww.xml" />
+      <outline type="rss" text="StarTalk Radio" xmlUrl="http://feeds.soundcloud.com/users/soundcloud:users:38128127/sounds.rss" />
+      <outline type="rss" text="Hacker Public Radio" xmlUrl="http://hackerpublicradio.org/hpr_rss.php" />
+      <outline type="rss" text="The Moth Podcast" xmlUrl="http://feeds.feedburner.com/themothpodcast" />
+      <outline type="rss" text="Codes that Changed the World" xmlUrl="http://www.bbc.co.uk/programmes/b05qqhqp/episodes/downloads.rss" />
+      <outline type="rss" text="Politics Weekly" xmlUrl="http://www.theguardian.com/politics/series/politicsweekly/podcast.xml" />
+      <outline type="rss" text="The Naked Scientists Podcast" xmlUrl="http://rss.acast.com/naked_scientists_podcast" />
+      <outline type="rss" text="KCRW's Here Be Monsters" xmlUrl="http://feeds.feedburner.com/herebemonsterspodcast/" />
+      <outline type="rss" text="TED Radio Hour" xmlUrl="http://www.npr.org/rss/podcast.php?id=510298" />
+      <outline type="rss" text="The Pod Delusion" xmlUrl="http://feeds.feedburner.com/ThePodDelusion" />
+      <outline type="rss" text="Linux Voice Podcast" xmlUrl="http://www.linuxvoice.com/podcast_mp3.rss" />
+      <outline type="rss" text="This American Life" xmlUrl="http://feed.thisamericanlife.org/talpodcast" />
+      <outline type="rss" text="The Jodcast - astronomy podcast" xmlUrl="http://www.jodcast.net/rss.xml" />
+      <outline type="rss" text="This Week in Tech (MP3)" xmlUrl="http://feeds.twit.tv/twit.xml" />
+      <outline type="rss" text="Club Jazzafip" xmlUrl="http://radiofrance-podcast.net/podcast09/rss_12250.xml" />
+      <outline type="rss" text="Devops Mastery" xmlUrl="http://feeds.soundcloud.com/users/soundcloud:users:79143337/sounds.rss" />
+      <outline type="rss" text="Kraken" xmlUrl="http://www.krakenpodcast.com/rss.xml" />
+      <outline type="rss" text="Invisibilia" xmlUrl="http://www.npr.org/rss/podcast.php?id=510307" />
+      <outline type="rss" text="No Such Thing As A Fish" xmlUrl="http://feeds.soundcloud.com/users/soundcloud:users:11400353/sounds.rss?#" />
+      <outline type="rss" text="Geek News Radio" xmlUrl="http://sixgun.org/feed/gnr" />
+      <outline type="rss" text="Radiolab" xmlUrl="http://feeds.wnyc.org/radiolab" />
+      <outline type="rss" text="The Bugcast" xmlUrl="http://thebugcast.org/podcast/feed/" />
+      <outline type="rss" text="Triangulation (MP3)" xmlUrl="http://leo.am/podcasts/tri.xml" />
+      <outline type="rss" text="Bad Voltage" xmlUrl="http://www.badvoltage.org/feed/mp3/" />
+      <outline type="rss" text="This Week in Science - The Kickass Science Podcast" xmlUrl="http://feeds.feedburner.com/twis/science/" />
+      <outline type="rss" text="TechSNAP MP3" xmlUrl="http://feeds.feedburner.com/techsnapmp3" />
+      <outline type="rss" text="The Life Scientific" xmlUrl="http://www.bbc.co.uk/programmes/b015sqc7/episodes/downloads.rss" />
+      <outline type="rss" text="Hello Internet" xmlUrl="http://feeds.podtrac.com/rZy85ymZYZc$" />
+      <outline type="rss" text="FIP - Dites 33 sur FIP" xmlUrl="http://radiofrance-podcast.net/podcast09/rss_12744.xml" />
+      <outline type="rss" text="The Story Collider" xmlUrl="http://feeds.feedburner.com/TheStoryCollider" />
+      <outline type="rss" text="Science Weekly" xmlUrl="http://www.theguardian.com/science/series/science/podcast.xml" />
+      <outline type="rss" text="Freakonomics Radio" xmlUrl="http://feeds.feedburner.com/freakonomicsradio" />
+      <outline type="rss" text="Science in Action" xmlUrl="http://www.bbc.co.uk/programmes/p002vsnb/episodes/downloads.rss" />
+      <outline type="rss" text="Plumbing the Death Star" xmlUrl="https://www.spreaker.com/show/1195571/episodes/feed" />
+      <outline type="rss" text="Pitch" xmlUrl="http://feeds.feedburner.com/hearpitch" />
+      <outline type="rss" text="Mark Kermode: The Soundtrack of My Life" xmlUrl="http://www.bbc.co.uk/programmes/p02slrc3/episodes/downloads.rss" />
+      <outline type="rss" text="FLOSS Weekly (MP3)" xmlUrl="http://feeds.twit.tv/floss.xml" />
+      <outline type="rss" text="Tech Weekly" xmlUrl="http://www.theguardian.com/technology/series/techweekly/podcast.xml" />
+      <outline type="rss" text="Intelligence Squared" xmlUrl="http://feeds.soundcloud.com/users/soundcloud:users:2461663/sounds.rss" />
+      <outline type="rss" text="Serial" xmlUrl="http://feeds.serialpodcast.org/serialpodcast" />
+      <outline type="rss" text="This Week in Tech (MP3)" xmlUrl="http://leoville.tv/podcasts/twit.xml" />
+      <outline type="rss" text="Welcome to Night Vale" xmlUrl="http://nightvale.libsyn.com/rss" />
+      <outline type="rss" text="Sysadministrivia" xmlUrl="https://sysadministrivia.com/feed.xml" />
+      <outline type="rss" text="Dead Things" xmlUrl="http://feeds.soundcloud.com/users/soundcloud:users:119071838/sounds.rss" />
+      <outline type="rss" text="Linux Luddites » MP3" xmlUrl="http://feeds.feedburner.com/LinuxLudditesMP3" />
+      <outline type="rss" text="Kermode and Mayo's Film Review" xmlUrl="http://www.bbc.co.uk/programmes/b00lvdrj/episodes/downloads.rss" />
+      <outline type="rss" text="Security Now (MP3)" xmlUrl="http://feeds.twit.tv/sn.xml" />
+      <outline type="rss" text="The Dick Turpin Road Show" xmlUrl="http://feeds.feedburner.com/tdtrs-mp3" />
+      <outline type="rss" text="Linux Outlaws" xmlUrl="http://feeds.feedburner.com/linuxoutlaws" />
+      <outline type="rss" text="The MBC Podcast" xmlUrl="http://manbycow.hipcast.com/rss/manbuycow.xml" />
+      <outline type="rss" text="Computing Britain" xmlUrl="http://www.bbc.co.uk/programmes/b06bq6j1/episodes/downloads.rss" />
+      <outline type="rss" text="Triangulation (MP3)" xmlUrl="http://feeds.twit.tv/tri.xml" />
+      <outline type="rss" text="Windows Weekly (MP3)" xmlUrl="http://leoville.tv/podcasts/ww.xml" />
+      <outline type="rss" text="Always Listening: Podcast Reviews" xmlUrl="http://www.blogtalkradio.com/alwayslisteningpod/podcast" />
+      <outline type="rss" text="Costing the Earth" xmlUrl="http://www.bbc.co.uk/programmes/b006r4wn/episodes/downloads.rss" />
+      <outline type="rss" text="Shift Run Stop" xmlUrl="http://feeds.feedburner.com/shiftrunstop/" />
+      <outline type="rss" text="Stuff You Should Know" xmlUrl="http://www.howstuffworks.com/podcasts/stuff-you-should-know.rss" />
+      <outline type="rss" text="Admin Admin Podcast" xmlUrl="http://feeds.feedburner.com/TheAdminAdminPodcast" />
+      <outline type="rss" text="The Naked Scientists Podcast" xmlUrl="http://www.thenakedscientists.com/naked_scientists_enhanced_podcast.xml" />
+      <outline type="rss" text="FLOSS Weekly (MP3)" xmlUrl="http://leoville.tv/podcasts/floss.xml" />
+      <outline type="rss" text="More or Less: Behind the Stats" xmlUrl="http://www.bbc.co.uk/programmes/p02nrss1/episodes/downloads.rss" />
+      <outline type="rss" text="Mark Kermode: The Soundtrack of My Life" xmlUrl="http://www.bbc.co.uk/programmes/b05vc9gs/episodes/downloads.rss" />
+      <outline type="rss" text="Thinking Allowed" xmlUrl="http://www.bbc.co.uk/programmes/b006qy05/episodes/downloads.rss" />
+      <outline type="rss" text="BBC Inside Science" xmlUrl="http://www.bbc.co.uk/programmes/b036f7w2/episodes/downloads.rss" />
+      <outline type="rss" text="Ubuntu Podcast" xmlUrl="http://ubuntupodcast.org/feed/podcast" />
+      <outline type="rss" text="Recycled Electrons" xmlUrl="http://feeds.feedburner.com/recycledelectrons" />
+      <outline type="rss" text="RatholeRadio.org" xmlUrl="http://feeds2.feedburner.com/RatholeRadio" />
+      <outline type="rss" text="Little Atoms" xmlUrl="http://rss.acast.com/littleatoms" />
+      <outline type="rss" text="99% Invisible" xmlUrl="http://feeds.99percentinvisible.org/99percentinvisible?" />
+      <outline type="rss" text="Kermode and Mayo's Film Review" xmlUrl="http://downloads.bbc.co.uk/podcasts/fivelive/kermode/rss.xml" />
+      <outline type="rss" text="The Nerdist" xmlUrl="http://nerdist.libsyn.com/rss" />
+      <outline type="rss" text="Security Now (MP3)" xmlUrl="http://leoville.tv/podcasts/sn.xml" />
+      <outline type="rss" text="Podcast - N of Us" xmlUrl="http://www.thenofus.com/podcast?format=RSS" />
+      <outline type="rss" text="Geek Syndicate" xmlUrl="http://geeksyndicate.libsyn.com/rss" />
+      <outline type="rss" text="This Week in Enterprise Tech (MP3)" xmlUrl="HTTP://feeds.twit.tv/twiet.xml" />
+      <outline type="rss" text="#systemau" xmlUrl="http://systemau.libsyn.com/rss" />
+      <outline type="rss" text="The Infinite Monkey Cage" xmlUrl="http://www.bbc.co.uk/programmes/b00snr0w/episodes/downloads.rss" />
+    </outline>
+  </body>
+</opml>

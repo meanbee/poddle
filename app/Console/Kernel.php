@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\DownloadMp3::class,
         Commands\ConvertMp3ToOpus::class,
+        Commands\SyncRssFeeds::class,
     ];
 
     /**

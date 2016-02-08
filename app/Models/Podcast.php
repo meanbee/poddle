@@ -17,15 +17,22 @@ class Podcast extends Model
     const STATUS_TEXT_CONCEPTS_IDENTIFIED = 'text_concepts_identified';
     const STATUS_TEXT_CONCEPTS_IDENTIFICATION_FAILED = 'text_concepts_identification_failed';
 
-    const COLUMN_ID = 'id';
-    const COLUMN_STATUS = 'status';
-    const COLUMN_URL = 'url';
-    const COLUMN_TRANSCRIPTION = 'transcription';
-    const COLUMN_META = 'meta';
-    const COLUMN_PODCAST_NAME = 'podcast_name';
-    const COLUMN_EPISODE_NAME = 'episode_name';
-    const COLUMN_ORIGINAL_FILE = 'original_file';
+    const COLUMN_AUTHOR = 'author';
     const COLUMN_CONVERTED_FILE = 'converted_file';
+    const COLUMN_DESCRIPTION = 'description';
+    const COLUMN_EPISODE_NAME = 'episode_name';
+    const COLUMN_GUID = 'guid';
+    const COLUMN_ID = 'id';
+    const COLUMN_LINK = 'link';
+    const COLUMN_META = 'meta';
+    const COLUMN_ORIGINAL_FILE_TYPE = 'original_file_type';
+    const COLUMN_ORIGINAL_FILE = 'original_file';
+    const COLUMN_PODCAST_NAME = 'podcast_name';
+    const COLUMN_PUBLISHED_DATE = 'published_date';
+    const COLUMN_RSS_ID = 'rss_id';
+    const COLUMN_STATUS = 'status';
+    const COLUMN_TRANSCRIPTION = 'transcription';
+    const COLUMN_URL = 'url';
 
     /**
      * The attributes that are mass assignable.

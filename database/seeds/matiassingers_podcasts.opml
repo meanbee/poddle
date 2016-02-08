@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+    <title>Podcast subscriptions for mail@matiassingers.com</title>
+    <dateCreated>Wed, 8 Oct 2014 15:20:29 GMT</dateCreated>
+    <dateModified>Sat, 11 Apr 2015 18:17:35 GMT</dateModified>
+</head>
+<body>
+    <outline text="Radiolab from WNYC" type="rss" xmlUrl="http://feeds.wnyc.org/radiolab" htmlUrl="http://www.radiolab.org/series/podcasts/" />
+    <outline text="99% Invisible" type="rss" xmlUrl="http://feeds.99percentinvisible.org/99percentinvisible" htmlUrl="http://99percentinvisible.prx.org" />
+    <outline text="This American Life" type="rss" xmlUrl="http://feeds.thisamericanlife.org/talpodcast" htmlUrl="http://www.thisamericanlife.org" />
+    <outline text="Dan Carlin&apos;s Hardcore History" type="rss" xmlUrl="http://feeds.feedburner.com/dancarlin/history?format=xml" htmlUrl="http://www.dancarlin.com" />
+    <outline text="Serial" type="rss" xmlUrl="http://feeds.serialpodcast.org/serialpodcast" htmlUrl="http://serialpodcast.org" />
+    <outline text="The Talk Show With John Gruber" type="rss" xmlUrl="http://daringfireball.net/thetalkshow/rss" htmlUrl="http://daringfireball.net/thetalkshow" />
+    <outline text="Dorm Room Tycoon" type="rss" xmlUrl="http://feeds.feedburner.com/DormRoomTycoon" htmlUrl="http://drt.fm" />
+    <outline text="Product People" type="rss" xmlUrl="http://feeds.feedburner.com/productpeople/JXQt" htmlUrl="http://productpeople.tv" />
+    <outline text="StartUp Podcast" type="rss" xmlUrl="http://feeds.hearstartup.com/hearstartup" htmlUrl="http://hearstartup.com" />
+    <outline text="Accidental Tech Podcast" type="rss" xmlUrl="http://atp.fm/episodes?format=rss" htmlUrl="http://atp.fm/" />
+</body>
+</opml>
