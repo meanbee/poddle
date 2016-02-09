@@ -68,6 +68,311 @@ class Podcast extends Model
     }
 
     /**
+     * Get Author
+     *
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->getAttribute(static::COLUMN_AUTHOR);
+    }
+
+    /**
+     * Set author
+     *
+     * @param $author
+     * @return $this
+     */
+    public function setAuthor($author)
+    {
+        return $this->setAttribute(static::COLUMN_AUTHOR, $author);
+    }
+
+    /**
+     * Get converted file
+     *
+     * @return mixed
+     */
+    public function getConvertedFile()
+    {
+        return $this->getAttribute(static::COLUMN_CONVERTED_FILE);
+    }
+
+    /**
+     * Set converted file
+     *
+     * @param $file
+     * @return $this
+     */
+    public function setConvertedFile($file)
+    {
+        return $this->setAttribute(static::COLUMN_CONVERTED_FILE, $file);
+    }
+
+    /**
+     * Get Description
+     *
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->getAttribute(static::COLUMN_DESCRIPTION);
+    }
+
+    /**
+     * Set Description
+     *
+     * @param $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        return $this->setAttribute(static::COLUMN_DESCRIPTION, $description);
+    }
+
+    /**
+     * Get Episode Name
+     *
+     * @return mixed
+     */
+    public function getEpisodeName()
+    {
+        return $this->getAttribute(static::COLUMN_EPISODE_NAME);
+    }
+
+    /**
+     * Set Episode Name
+     *
+     * @return $this
+     */
+    public function setEpisodeName()
+    {
+        return $this->setAttribute(static::COLUMN_EPISODE_NAME);
+    }
+
+    /**
+     * Get GUID
+     *
+     * @return mixed
+     */
+    public function getGuid()
+    {
+        return $this->getAttribute(static::COLUMN_GUID);
+    }
+
+    /**
+     * Set GUID
+     *
+     * @param $guid
+     * @return $this
+     */
+    public function setGuid($guid)
+    {
+        return $this->setAttribute(static::COLUMN_GUID, $guid);
+    }
+
+    /**
+     * Get ID
+     *
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->getAttribute(static::COLUMN_ID);
+    }
+
+    /**
+     * Get link
+     *
+     * @return mixed
+     */
+    public function getLink()
+    {
+        return $this->getAttribute(static::COLUMN_LINK);
+    }
+
+    /**
+     * Set Link
+     *
+     * @param $link
+     * @return $this
+     */
+    public function setLink($link)
+    {
+        return $this->setAttribute(static::COLUMN_LINK, $link);
+    }
+
+    /**
+     * Get meta
+     *
+     * @return mixed
+     */
+    public function getMeta()
+    {
+        return $this->getAttribute(static::COLUMN_META);
+    }
+
+    /**
+     * Set meta
+     *
+     * @param $meta
+     * @return $this
+     */
+    public function setMeta($meta)
+    {
+        return $this->setAttribute(static::COLUMN_META, $meta);
+    }
+
+    /**
+     * Get original file type
+     *
+     * @return mixed
+     */
+    public function getOriginalFileType()
+    {
+        return $this->getAttribute(static::COLUMN_ORIGINAL_FILE_TYPE);
+    }
+
+    /**
+     * Set original file type
+     *
+     * @param $fileType
+     * @return $this
+     */
+    public function setOriginalFileType($fileType)
+    {
+        return $this->setAttribute(static::COLUMN_ORIGINAL_FILE_TYPE, $fileType);
+    }
+
+    /**
+     * Get original file
+     *
+     * @return mixed
+     */
+    public function getOriginalFile()
+    {
+        return $this->getAttribute(static::COLUMN_ORIGINAL_FILE);
+    }
+
+    /**
+     * Set original file
+     *
+     * @param $fileType
+     * @return $this
+     */
+    public function setOriginalFile($file)
+    {
+        return $this->setAttribute(static::COLUMN_ORIGINAL_FILE, $file);
+    }
+
+    /**
+     * Get Podcast Name
+     *
+     * @return mixed
+     */
+    public function getPodcastName()
+    {
+        return $this->getAttribute(static::COLUMN_PODCAST_NAME);
+    }
+
+    /**
+     * Set Podcast Name
+     *
+     * @return $this
+     */
+    public function setPodcastName()
+    {
+        return $this->setAttribute(static::COLUMN_PODCAST_NAME);
+    }
+
+    /**
+     * Get Published Date
+     *
+     * @return mixed
+     */
+    public function getPublishedDate()
+    {
+        return $this->getAttribute(static::COLUMN_PUBLISHED_DATE);
+    }
+
+    /**
+     * Set Published Date
+     *
+     * @param $publishedDate
+     * @return $this
+     */
+    public function setPublishedDate($publishedDate)
+    {
+        return $this->setAttribute(static::COLUMN_PUBLISHED_DATE, $publishedDate);
+    }
+
+    /**
+     * Get Status
+     *
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->getAttribute(static::COLUMN_STATUS);
+    }
+
+    /**
+     * Set status
+     *
+     * @param $status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        return $this->setAttribute(static::COLUMN_STATUS, $status);
+    }
+
+    /**
+     * Get Transcription
+     *
+     * @return mixed
+     */
+    public function getTranscription()
+    {
+        return $this->getAttribute(static::COLUMN_TRANSCRIPTION);
+    }
+
+    /**
+     * Set Transcription
+     *
+     * @param $transcription
+     * @return $this
+     */
+    public function setTranscription($transcription)
+    {
+        return $this->setAttribute(static::COLUMN_TRANSCRIPTION, $transcription);
+    }
+
+    /**
+     * Get URL
+     *
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->getAttribute(static::COLUMN_URL);
+    }
+
+    /**
+     * Set URL
+     *
+     * @param $url
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        return $this->setAttribute(static::COLUMN_URL, $url);
+    }
+
+
+
+
+    /**
      * Get recent podcasts
      *
      * @param $limit
