@@ -14,44 +14,38 @@ class SpeechToTextCommand extends Command
     /**
      * @var string
      */
-    protected $name = 'ibm:speechToText';
+    protected $signature = 'podcast:speechToText';
+
+
+    protected $description = 'Convert podcasts to text';
 
     /**
      * @var SpeechToText
      */
     protected $speechToText;
 
-    public function __construct(SpeechToText $speechToText = null)
-    {
-        if (!$speechToText) {
-            $config = new Config();
-            $config->setUsername(env('IBM_SPEECH_TO_TEXT_USERNAME'));
-            $config->setPassword(env('IBM_SPEECH_TO_TEXT_PASSWORD'));
-
-            $speechToText = new SpeechToText($config);
-        }
-
-        $this->speechToText = $speechToText;
-
-        parent::__construct();
-    }
-
     /**
      * @return $this
      */
     public function fire()
     {
+        $config = new Config();
+        $config->setUsername(env('IBM_SPEECH_TO_TEXT_USERNAME'));
+        $config->setPassword(env('IBM_SPEECH_TO_TEXT_PASSWORD'));
+
+        $speechToText = new SpeechToText($config);
+
         /** @var \Illuminate\Database\Eloquent\Builder $podcasts */
         $podcasts = Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_FILE_CONVERTED);
         foreach ($podcasts->get() as $podcast) {
 
             /** @var Podcast $podcast */
             $fileName = $podcast->getAttribute(Podcast::COLUMN_CONVERTED_FILE);
-            $this->speechToText->recognize(storage_path("app/{$fileName}"));
+            $speechToText->recognize(storage_path("app/{$fileName}"));
 
             try {
 
-                foreach ($this->speechToText->getTranscripts() as $transcript) {
+                foreach ($speechToText->getTranscripts() as $transcript) {
 
                     $podcast->setAttribute(Podcast::COLUMN_TRANSCRIPTION, $transcript);
                     $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_AUDIO_TO_TEXT_CONVERTED);
