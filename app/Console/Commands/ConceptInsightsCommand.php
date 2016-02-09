@@ -17,49 +17,31 @@ class ConceptInsightsCommand extends Command
     /**
      * @var string
      */
-    protected $name = 'ibm:conceptInsights';
+    protected $signature = 'podcast:conceptInsights';
 
-    /**
-     * @var Corpus
-     */
-    protected $corpus;
-
-    /**
-     * ConceptInsightsCommand constructor.
-     *
-     * @param Corpus $corpus
-     *
-     * @internal param Corpus|null $document
-     */
-    public function __construct(Corpus $corpus = null)
-    {
-        if (!$corpus) {
-            $config = new Config();
-            $config->setUsername(env('IBM_CONCEPT_INSIGHTS_USERNAME'));
-            $config->setPassword(env('IBM_CONCEPT_INSIGHTS_PASSWORD'));
-
-            $corpus = new Corpus(static::CORPUS_NAME, Ibm::DEFAULT_REQUEST_METHOD, $config);
-        }
-
-        $this->corpus = $corpus;
-
-        parent::__construct();
-    }
+    protected $description = 'Submit transcriptions to the IBM Corpus';
 
     /**
      * @return $this
      */
     public function fire()
     {
+
+        $config = new Config();
+        $config->setUsername(env('IBM_CONCEPT_INSIGHTS_USERNAME'));
+        $config->setPassword(env('IBM_CONCEPT_INSIGHTS_PASSWORD'));
+
+        $corpus = new Corpus(static::CORPUS_NAME, Ibm::DEFAULT_REQUEST_METHOD, $config);
+
         /** @var \Illuminate\Database\Eloquent\Builder $podcasts */
         $podcasts = Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_AUDIO_TO_TEXT_CONVERTED);
         foreach ($podcasts->get() as $podcast) {
             /** @var Podcast $podcast */
             try {
 
-                $this->corpus->createDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
+                $corpus->createDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
 
-                $document = $this->corpus->getDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
+                $document = $corpus->getDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
 
                 $data = [
                     'id'          => $podcast->getAttribute(Podcast::COLUMN_ID),
