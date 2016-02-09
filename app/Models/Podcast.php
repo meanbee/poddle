@@ -18,6 +18,7 @@ class Podcast extends Model
     const STATUS_TEXT_CONCEPTS_IDENTIFICATION_FAILED = 'text_concepts_identification_failed';
 
     const COLUMN_AUTHOR = 'author';
+    const COLUMN_CONCEPTS = 'concepts';
     const COLUMN_CONVERTED_FILE = 'converted_file';
     const COLUMN_DESCRIPTION = 'description';
     const COLUMN_EPISODE_NAME = 'episode_name';
@@ -86,6 +87,29 @@ class Podcast extends Model
     public function setAuthor($author)
     {
         return $this->setAttribute(static::COLUMN_AUTHOR, $author);
+    }
+
+    /**
+     * Get Concepts
+     *
+     * @return mixed
+     */
+    public function getConcepts()
+    {
+        $concepts = $this->getAttribute(static::COLUMN_CONCEPTS);
+        // @TODO connect up with concepts, I don't know how they are being saved.
+        return array($concepts);
+    }
+
+    /**
+     * Set Concepts
+     *
+     * @param $concepts
+     * @return $this
+     */
+    public function setConcepts($concepts)
+    {
+        return $this->setAttribute(static::COLUMN_CONCEPTS, $concepts);
     }
 
     /**
@@ -367,6 +391,16 @@ class Podcast extends Model
     public function setUrl($url)
     {
         return $this->setAttribute(static::COLUMN_URL, $url);
+    }
+
+    /**
+     * Get Slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return str_slug(sprintf('%s %s', $this->getPodcastName(), $this->getEpisodeName()));
     }
 
 

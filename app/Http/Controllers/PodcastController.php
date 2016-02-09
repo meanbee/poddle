@@ -20,6 +20,21 @@ class PodcastController extends Controller
      */
     protected $corpus;
 
+    public function view($id, $slug) {
+
+        /** @var Podcast $podcast */
+        $podcast = Podcast::findOrFail($id);
+
+        if ($podcast) {
+            if ($podcast->getSlug() != $slug) {
+                return redirect(route('podcast.view', ['id' => $podcast->getId(), 'slug' => $podcast->getSlug()]));
+            }
+
+            return view('podcast.view', ['podcast' => $podcast]);
+
+        }
+    }
+
 
     /**
      * @return Factory|View

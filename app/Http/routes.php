@@ -30,5 +30,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/rss/submit', ['as' => 'rss.submit', 'uses' => 'RssController@getSubmit']);
     Route::post('/rss/submit', ['as' => 'rss.submit', 'uses' => 'RssController@postSubmit']);
 
+
+    Route::get('/podcast/{id}/{slug}', ['as' => 'podcast.view', 'uses' => 'PodcastController@view']);
+
+
     Route::post('/search/result', ['as' => 'podcast.search.result', 'uses' => 'PodcastController@searchResult']);
 });
