@@ -54,10 +54,35 @@ class Podcast extends Model
     protected $guarded = [self::COLUMN_ID];
 
     /**
+     * Which columns should automatically be converted to (Carbon) dates.
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'published_date'];
+
+    /**
      * Get RSS feed of podcast.
      */
     public function getRss()
     {
         return $this->hasOne('App\Models\Rss');
+    }
+
+    /**
+     * Get recent podcasts
+     *
+     * @param $limit
+     * @param $afterDate
+     *
+     * @return Podcast[]
+     */
+    static function getRecent($limit = 10, $afterDate = null)
+    {
+        $podcasts = self::orderBy(Podcast::COLUMN_PUBLISHED_DATE, 'desc')->take($limit);
+
+        if ($afterDate) {
+            $podcasts = $podcasts->whereDate(Podcast::COLUMN_PUBLISHED_DATE, '>=', $afterDate);
+        }
+
+        return $podcasts->get();
     }
 }

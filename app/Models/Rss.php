@@ -45,10 +45,36 @@ class Rss extends Model
     protected $guarded = [self::COLUMN_ID, self::COLUMN_PODCAST_ID];
 
     /**
+     * Which columns should automatically be converted to (Carbon) dates.
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at', 'last_sync'];
+
+
+    /**
      * Get podcasts for an RSS feed
      */
     public function podcasts()
     {
         return $this->hasMany('App\Models\Podcast');
+    }
+
+    /**
+     * Get new RSS submissions
+     *
+     * @param $limit
+     * @param $afterDate
+     *
+     * @return Rss[]
+     */
+    static function getNew($limit = 10, $afterDate = null)
+    {
+        $rss = self::orderBy(Rss::CREATED_AT, 'desc')->take($limit);
+
+        if ($afterDate) {
+            $rss = $rss->whereDate(Rss::CREATED_AT, '>=', $afterDate);
+        }
+
+        return $rss->get();
     }
 }
