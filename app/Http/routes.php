@@ -30,8 +30,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/rss/submit', ['as' => 'rss.submit', 'uses' => 'RssController@getSubmit']);
     Route::post('/rss/submit', ['as' => 'rss.submit', 'uses' => 'RssController@postSubmit']);
 
-    Route::get('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@getSubmit']);
-    Route::post('/podcast/submit', ['as' => 'podcast.submit', 'uses' => 'PodcastController@postSubmit']);
-
     Route::post('/search/result', ['as' => 'podcast.search.result', 'uses' => 'PodcastController@searchResult']);
 });

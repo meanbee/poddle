@@ -20,29 +20,6 @@ class PodcastController extends Controller
      */
     protected $corpus;
 
-    /**
-     * Show the submit article page.
-     *
-     * @return Factory|View
-     */
-    public function getSubmit()
-    {
-        return view('podcast.submit');
-    }
-
-    /**
-     *
-     * Store a new user.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function postSubmit(Request $request)
-    {
-        Podcast::create($request->all());
-
-        return redirect('podcast/submit');
-    }
 
     /**
      * @return Factory|View
