@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
         Commands\DownloadMp3::class,
         Commands\ConvertMp3ToOpus::class,
         Commands\SyncRssFeeds::class,
+        Commands\ConceptInsightsCommand::class,
+        Commands\SpeechToTextCommand::class
     ];
 
     /**
