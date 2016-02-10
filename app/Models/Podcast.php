@@ -65,7 +65,7 @@ class Podcast extends Model
      */
     public function getRss()
     {
-        return $this->hasOne('App\Models\Rss');
+        return $this->belongsTo('App\Models\Rss');
     }
 
     /**

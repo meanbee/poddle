@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 class RssController extends Controller
 {
 
+    public function view($id, $slug) {
+
+        /** @var Rss $rss */
+        $rss = Rss::findOrFail($id);
+
+        if ($rss) {
+            if ($rss->getSlug() != $slug) {
+                return redirect(route('rss.view', ['id' => $rss->getId(), 'slug' => $rss->getSlug()]));
+            }
+
+            return view('rss.view', ['rss' => $rss]);
+
+        }
+    }
+
     /**
      * Show the submit article page.
      *
