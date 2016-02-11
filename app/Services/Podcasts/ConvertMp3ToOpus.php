@@ -38,7 +38,7 @@ class ConvertMp3ToOpus
 
                     $output = '';
                     $returnCode = -1;
-                    $origPath = storage_path('app/' . $podcast->getOriginalFile();
+                    $origPath = storage_path('app/' . $podcast->getOriginalFile());
                     $filenameInfo = pathinfo($origPath);
                     $newFilename = $filenameInfo['filename'] . '.opus';
                     $finalPath = storage_path('/app/' . $newFilename);
