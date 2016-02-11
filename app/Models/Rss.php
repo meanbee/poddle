@@ -294,7 +294,7 @@ class Rss extends Model
      */
     static function getNew($limit = 10, $afterDate = null)
     {
-        $rss = self::orderBy(Rss::CREATED_AT, 'desc')->take($limit);
+        $rss = self::whereNotNull(Rss::COLUMN_NAME)->orderBy(Rss::CREATED_AT, 'desc')->take($limit);
 
         if ($afterDate) {
             $rss = $rss->whereDate(Rss::CREATED_AT, '>=', $afterDate);
