@@ -38,20 +38,20 @@ class ConvertMp3ToOpus
 
                     $output = '';
                     $returnCode = -1;
-                    $origPath = storage_path('app/' . $podcast->getAttribute(Podcast::COLUMN_ORIGINAL_FILE));
+                    $origPath = storage_path('app/' . $podcast->getOriginalFile();
                     $filenameInfo = pathinfo($origPath);
                     $newFilename = $filenameInfo['filename'] . '.opus';
                     $finalPath = storage_path('/app/' . $newFilename);
                     exec("avconv -i $origPath -f wav - | opusenc --bitrate 256 - $finalPath 2> /dev/null", $output, $returnCode);
 
                     if ($returnCode !== 0) {
-                        $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_FILE_CONVERSION_FAILED);
+                        $podcast->setStatus(Podcast::STATUS_FILE_CONVERSION_FAILED);
                         $podcast->save();
                         continue;
                     }
 
-                    $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_FILE_CONVERTED);
-                    $podcast->setAttribute(Podcast::COLUMN_CONVERTED_FILE, $newFilename);
+                    $podcast->setStatus(Podcast::STATUS_FILE_CONVERTED);
+                    $podcast->setConvertedFile($newFilename);
                     $podcast->save();
                 }
             });
