@@ -5,6 +5,7 @@ namespace App\Services\Podcasts;
 use App\Models\Podcast;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Class DownloadMp3
@@ -48,12 +49,16 @@ class DownloadMp3
             $filename = last(explode('/', $url));
             $path = storage_path('app/' . $filename);
 
-            $response = $this->httpClient->request('GET', $url, ['sink' => $path]);
+            try {
+                $response = $this->httpClient->request('GET', $url, ['sink' => $path]);
 
-            if ($response->getStatusCode() == 200 ) {
-                $podcast->setStatus(Podcast::STATUS_DOWNLOADED);
-                $podcast->setOriginalFile($filename);
-            } else {
+                if ($response->getStatusCode() == 200 ) {
+                    $podcast->setStatus(Podcast::STATUS_DOWNLOADED);
+                    $podcast->setOriginalFile($filename);
+                } else {
+                    $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
+                }
+            } catch (ClientException $e) {
                 $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
             }
 
