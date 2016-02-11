@@ -25,7 +25,7 @@ class DownloadMp3
      */
     protected $limit;
 
-    public function __construct(ClientInterface $httpClient = null, $limit = 20)
+    public function __construct(ClientInterface $httpClient = null, $limit = 10)
     {
         $this->httpClient = $httpClient ?: new Client();
         $this->limit = $limit;
