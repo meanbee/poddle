@@ -148,7 +148,7 @@ class Rss extends Model
     /**
      * Set Categories
      *
-     * @param $categories
+     * @param array $categories
      * @return $this
      */
     public function setCategories($categories)
@@ -156,7 +156,8 @@ class Rss extends Model
         if (!is_array($categories)) {
             $categories = [$categories];
         }
-        return $this->setAttribute(static::COLUMN_CATEGORY, json_encode($categories));
+
+        return $this->setAttribute(static::COLUMN_CATEGORY, json_encode(array_values(array_unique($categories))));
     }
 
     /**
