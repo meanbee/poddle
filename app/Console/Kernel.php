@@ -13,8 +13,11 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\DownloadMp3::class,
+        Commands\ConceptInsightsCommand::class,
         Commands\ConvertMp3ToOpus::class,
+        Commands\DownloadConvertUpload::class,
+        Commands\DownloadMp3::class,
+        Commands\SpeechToTextCommand::class,
         Commands\SyncRssFeeds::class,
         Commands\ConceptInsightsCommand::class,
         Commands\SpeechToTextCommand::class

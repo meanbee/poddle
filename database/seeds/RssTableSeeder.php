@@ -77,7 +77,6 @@ class RssTableSeeder extends Seeder
 
         $rss = new Rss();
         $rss->setAttribute(Rss::COLUMN_URL, $url);
-        $rss->setAttribute(Rss::COLUMN_NAME, $title);
         $rss->save();
     }
 }

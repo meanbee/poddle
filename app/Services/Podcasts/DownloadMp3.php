@@ -5,6 +5,7 @@ namespace App\Services\Podcasts;
 use App\Models\Podcast;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Class DownloadMp3
@@ -19,9 +20,15 @@ class DownloadMp3
     /** @var Client */
     protected $httpClient;
 
-    public function __construct(ClientInterface $httpClient = null)
+    /**
+     * Limit the number of podcasts downloaded per run
+     */
+    protected $limit;
+
+    public function __construct(ClientInterface $httpClient = null, $limit = 10)
     {
         $this->httpClient = $httpClient ?: new Client();
+        $this->limit = $limit;
     }
 
 
@@ -31,21 +38,28 @@ class DownloadMp3
     public function run(){
 
         /** @var Podcast[] $podcasts */
-        $podcasts = Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_NEW)->get();
+        $podcasts = Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_NEW)
+            ->orderBy(Podcast::COLUMN_PUBLISHED_DATE, 'desc')
+            ->take($this->limit)
+            ->get();
 
         foreach ($podcasts as $podcast) {
 
-            $url = $podcast->getAttribute(Podcast::COLUMN_URL);
+            $url = $podcast->getUrl();
             $filename = last(explode('/', $url));
             $path = storage_path('app/' . $filename);
 
-            $response = $this->httpClient->request('GET', $url, ['sink' => $path]);
+            try {
+                $response = $this->httpClient->request('GET', $url, ['sink' => $path]);
 
-            if ($response->getStatusCode() == 200 ) {
-                $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_DOWNLOADED);
-                $podcast->setAttribute(Podcast::COLUMN_ORIGINAL_FILE, $filename);
-            } else {
-                $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_DOWNLOAD_FAILED);
+                if ($response->getStatusCode() == 200 ) {
+                    $podcast->setStatus(Podcast::STATUS_DOWNLOADED);
+                    $podcast->setOriginalFile($filename);
+                } else {
+                    $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
+                }
+            } catch (ClientException $e) {
+                $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
             }
 
             $podcast->save();

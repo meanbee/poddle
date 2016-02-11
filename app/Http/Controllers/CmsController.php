@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Podcast;
+use App\Models\Rss;
+
 class CmsController extends Controller
 {
 
@@ -10,6 +13,12 @@ class CmsController extends Controller
 	 */
 	public function home()
 	{
-		return view('cms.home');
+		$recentPodcasts = Podcast::getRecent();
+		$newRss = Rss::getNew();
+
+		return view(
+			'cms.home',
+			['recentPodcasts' => $recentPodcasts, 'newRss' => $newRss]
+		);
 	}
 }
