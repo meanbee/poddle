@@ -169,9 +169,9 @@ class Podcast extends Model
      *
      * @return $this
      */
-    public function setEpisodeName()
+    public function setEpisodeName($name)
     {
-        return $this->setAttribute(static::COLUMN_EPISODE_NAME);
+        return $this->setAttribute(static::COLUMN_EPISODE_NAME, $name);
     }
 
     /**
@@ -304,9 +304,9 @@ class Podcast extends Model
      *
      * @return $this
      */
-    public function setPodcastName()
+    public function setPodcastName($name)
     {
-        return $this->setAttribute(static::COLUMN_PODCAST_NAME);
+        return $this->setAttribute(static::COLUMN_PODCAST_NAME, $name);
     }
 
     /**
@@ -328,6 +328,27 @@ class Podcast extends Model
     public function setPublishedDate($publishedDate)
     {
         return $this->setAttribute(static::COLUMN_PUBLISHED_DATE, $publishedDate);
+    }
+
+    /**
+     * Get RSS ID
+     *
+     * @return mixed
+     */
+    public function getRssId()
+    {
+        return $this->getAttribute(static::COLUMN_RSS_ID);
+    }
+
+    /**
+     * Set RSS ID
+     *
+     * @param $id
+     * @return $this
+     */
+    public function setRssId($id)
+    {
+        return $this->setAttribute(static::COLUMN_RSS_ID, $id);
     }
 
     /**
