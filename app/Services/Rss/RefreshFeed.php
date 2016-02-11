@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use ezcFeed;
 use ezcFeedParseErrorException;
-use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use Mockery\CountValidator\Exception;
@@ -45,7 +44,7 @@ class RefreshFeed
                 foreach ($rssChunk as $rss) {
 
                     try {
-                        $response = $this->httpClient->get($rss->getAttribute(Rss::COLUMN_URL));
+                        $response = $this->httpClient->get($rss->getUrl());
                         $contents = $response->getBody()->getContents();
 
                         if ($response->getStatusCode() != 200 || $contents == '') {
@@ -115,6 +114,7 @@ class RefreshFeed
         $link = isset($feed->link) ? $feed->link[0]->href : null;
         $buildDate = isset($feed->updated->date) ? $feed->updated->date : null;
 
+        $categories = array();
 
         if ($feed->hasModule('iTunes')) {
             $itunes = $feed->iTunes;
@@ -122,27 +122,23 @@ class RefreshFeed
             $link = (isset($itunes->link) && !$link) ? $itunes->link : $link;
 
             if (isset($itunes->category)) {
-                $categories = array();
                 foreach ( $itunes->category as $category ) {
                     $categories[] = $category->term;
                     if (isset($category->category)) {
                         $categories[] = $category->category->term;
                     }
                 }
-
-                $categories = array_unique($categories);
-                $category = json_encode(array_values($categories));
             }
         }
 
 
-        $rss->setAttribute(Rss::COLUMN_NAME, $title);
-        $rss->setAttribute(Rss::COLUMN_DESCRIPTION, $description);
-        $rss->setAttribute(Rss::COLUMN_AUTHOR, $author);
-        $rss->setAttribute(Rss::COLUMN_CATEGORY, $category);
-        $rss->setAttribute(Rss::COLUMN_IMAGE, $image);
-        $rss->setAttribute(Rss::COLUMN_LINK, $link);
-        $rss->setAttribute(Rss::COLUMN_BUILD_DATE, $buildDate);
+        $rss->setName($title);
+        $rss->setDescription($description);
+        $rss->setAuthor($author);
+        $rss->setCategories($categories);
+        $rss->setImage($image);
+        $rss->setLink($link);
+        $rss->setBuildDate($buildDate);
     }
 
     /**
@@ -162,7 +158,7 @@ class RefreshFeed
             $publishedDate = isset( $item->published ) ? $item->published->date : null;
 
             $latestEpisode = $this->getLatestEpisode($rss);
-            if ($latestEpisode && $latestEpisode->getAttribute(Podcast::COLUMN_PUBLISHED_DATE) >= $publishedDate ){
+            if ($latestEpisode && $latestEpisode->getPublishedDate() >= $publishedDate ){
                 // We've already seen items this old, so ignore any others.
                 return;
             }
@@ -201,17 +197,17 @@ class RefreshFeed
             }
 
             $podcast = new Podcast();
-            $podcast->setAttribute(Podcast::COLUMN_RSS_ID, $rss->id);
-            $podcast->setAttribute(Podcast::COLUMN_PODCAST_NAME, $rss->getAttribute(Rss::COLUMN_NAME));
-            $podcast->setAttribute(Podcast::COLUMN_GUID, $guid);
-            $podcast->setAttribute(Podcast::COLUMN_URL, $url);
-            $podcast->setAttribute(Podcast::COLUMN_ORIGINAL_FILE_TYPE, $type);
-            $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_NEW);
-            $podcast->setAttribute(Podcast::COLUMN_EPISODE_NAME, $title);
-            $podcast->setAttribute(Podcast::COLUMN_AUTHOR, $author);
-            $podcast->setAttribute(Podcast::COLUMN_DESCRIPTION, $description);
-            $podcast->setAttribute(Podcast::COLUMN_PUBLISHED_DATE, $publishedDate);
-            $podcast->setAttribute(Podcast::COLUMN_LINK, $link);
+            $podcast->setRssId($rss->getId());
+            $podcast->setPodcastName($rss->getName());
+            $podcast->setGuid($guid);
+            $podcast->setUrl($url);
+            $podcast->setOriginalFileType($type);
+            $podcast->setStatus(Podcast::STATUS_NEW);
+            $podcast->setEpisodeName($title);
+            $podcast->setAuthor($author);
+            $podcast->setDescription($description);
+            $podcast->setPublishedDate($publishedDate);
+            $podcast->setLink($link);
             $podcast->save();
         }
     }
@@ -224,7 +220,7 @@ class RefreshFeed
      */
     private function getLatestEpisode($rss)
     {
-        $podcast = $rss->podcasts()->orderBy('published_date', 'desc')->first();
+        $podcast = $rss->podcasts()->orderBy(Podcast::COLUMN_PUBLISHED_DATE, 'desc')->first();
 
         if ($podcast) {
             return $podcast;
@@ -240,7 +236,7 @@ class RefreshFeed
      */
     private function refreshFinish($rss)
     {
-        $rss->setAttribute(Rss::COLUMN_LAST_SYNC, date('Y-m-d H:i:s'));
+        $rss->setLastSync(date('Y-m-d H:i:s'));
         $rss->save();
     }
 }
