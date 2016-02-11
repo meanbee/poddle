@@ -44,6 +44,6 @@ class DownloadConvertUpload extends Command
         $this->call('podcast:convertToOpus');
 
         $this->info('Converting text to speech');
-        $this->call('ibm:speechToText');
+        $this->call('podcast:speechToText');
     }
 }
