@@ -42,7 +42,7 @@ class ConvertMp3ToOpus
                     $filenameInfo = pathinfo($origPath);
                     $newFilename = $filenameInfo['filename'] . '.opus';
                     $finalPath = storage_path('/app/' . $newFilename);
-                    exec("avconv -i $origPath -f wav - | opusenc --bitrate 128 - $finalPath 2> /dev/null", $output, $returnCode);
+                    exec("avconv -i $origPath -f wav - | opusenc --bitrate 64 - $finalPath 2> /dev/null", $output, $returnCode);
 
                     if ($returnCode !== 0) {
                         $podcast->setStatus(Podcast::STATUS_FILE_CONVERSION_FAILED);
