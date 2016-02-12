@@ -39,28 +39,7 @@ class ConceptInsightsCommand extends Command
             /** @var Podcast $podcast */
             try {
 
-                $corpus->createDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
-
-                $document = $corpus->getDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
-
-                $data = [
-                    'id'          => $podcast->getAttribute(Podcast::COLUMN_ID),
-                    'label'       => $podcast->getAttribute(Podcast::COLUMN_PODCAST_NAME),
-                    'parts'       => [
-                        [
-                            'data'         => $podcast->getAttribute(Podcast::COLUMN_TRANSCRIPTION),
-                            'name'         => 'Text part',
-                            'content-type' => 'text/html'
-                        ]
-                    ],
-                    'user_fields' => [
-                        $podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME) => $podcast->getAttribute(Podcast::COLUMN_META)
-                    ],
-                ];
-
-                $document->config->setConfig('body', json_encode($data));
-
-                $document->create();
+                $this->createDocumentFromPodcast($corpus, $podcast);
 
                 $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_TEXT_CONCEPTS_IDENTIFIED);
                 $podcast->save();
@@ -74,5 +53,35 @@ class ConceptInsightsCommand extends Command
         }
 
         return $this;
+    }
+
+    /**
+     * @param Corpus $corpus
+     * @param Podcast $podcast
+     */
+    protected function createDocumentFromPodcast($corpus, $podcast)
+    {
+        $corpus->createDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
+
+        $document = $corpus->getDocument($podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME));
+
+        $data = [
+            'id'          => $podcast->getAttribute(Podcast::COLUMN_ID),
+            'label'       => $podcast->getAttribute(Podcast::COLUMN_PODCAST_NAME),
+            'parts'       => [
+                [
+                    'data'         => $podcast->getAttribute(Podcast::COLUMN_TRANSCRIPTION),
+                    'name'         => 'Text part',
+                    'content-type' => 'text/html'
+                ]
+            ],
+            'user_fields' => [
+                $podcast->getAttribute(Podcast::COLUMN_EPISODE_NAME) => $podcast->getAttribute(Podcast::COLUMN_META)
+            ],
+        ];
+
+        $document->config->setConfig('body', json_encode($data));
+
+        $document->create();
     }
 }
