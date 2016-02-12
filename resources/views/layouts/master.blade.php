@@ -17,7 +17,7 @@
     <meta name="msapplication-TileColor" content="#2f4aa0">
 
     <meta name="description" content="@yield('description')" />
-    <title>@yield('title') - Podcast Show Notes</title>
+    <title>@yield('title') - Poddle</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" media="all">
 
@@ -38,7 +38,8 @@
 <body>
     <header role="banner">
         <div class="header-inner">
-            <a class="logo" href="{{ URL::to('') }}"><h1>Podcast Show Notes</h1></a>
+            <a class="logo" href="{{ URL::to('') }}"><h1>Poddle</h1></a>
+            <p class="tagline">The podcast transcriber and concept based search service</p>
         </div>
     </header>
     <main role="main">

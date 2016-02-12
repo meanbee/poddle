@@ -7,6 +7,6 @@
     </div>
 
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Submit Podcast RSS"/>
+        <input type="submit" class="btn btn-primary" value="Submit"/>
     </div>
 </form>

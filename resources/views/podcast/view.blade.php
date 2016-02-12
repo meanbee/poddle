@@ -7,10 +7,17 @@ Get information on {{ $podcast->getEpisodeName() }} - {{ $podcast->getPodcastNam
 @stop
 @section('content')
     <section class="main-inner">
-        <h1>{{ $podcast->getEpisodeName() }}</h1>
-        <p class="podcast-name">{{ $podcast->getPodcastName() }}</p>
-        <p class="podcast-published-date">{{ $podcast->getPublishedDate()->diffForHumans() }}</p>
-        <a href="{{ $podcast->getUrl() }}">Download</a>
+
+        <div class="podcast-top-info">
+            <h1>{{ $podcast->getEpisodeName() }}</h1>
+            <a class="podcast-name" href="{{ route('rss.view', ['id' => $rss->getId(), 'slug' => $rss->getSlug()]) }}">{{ $podcast->getPodcastName() }}</a>
+            <p class="podcast-published-date">{{ $podcast->getPublishedDate()->diffForHumans() }}</p>
+            <a href="{{ $podcast->getUrl() }}">Download</a>
+        </div>
+
+        @if ($rss->getImage())
+            <img class="podcast-image" src="{{ $rss->getImage() }}" alt="{{ $rss->getName() }} Logo">
+        @endif
 
         <div class="transcription-container">
             <h2>Text Transcription</h2>

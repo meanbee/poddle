@@ -14,9 +14,23 @@ header[role="banner"] {
         display: inline-block;
         padding: 2em 2em 2em 8em;
         margin: 0 auto;
+        text-decoration: none;
 
         h1 {
             margin: 0;
+            text-transform: lowercase;
+
+            @media (min-width: 400px) {
+                font-size: 3em;
+            }
+        }
+    }
+
+    .tagline {
+        @media (min-width: 870px) {
+            display: inline-block;
+            margin: 2em 0 3em;
+            vertical-align: middle;
         }
     }
 }
@@ -26,7 +40,7 @@ header[role="banner"] {
 .footer-inner {
     @include outer-container();
 
-    padding: em(16);
+    padding: em(32) em(16);
     padding-bottom: 0;
 }
 

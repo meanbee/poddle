@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Podcast;
 use App\Services\Podcasts\Search;
+use App\Models\Rss;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,7 +23,9 @@ class PodcastController extends Controller
                 return redirect(route('podcast.view', ['id' => $podcast->getId(), 'slug' => $podcast->getSlug()]));
             }
 
-            return view('podcast.view', ['podcast' => $podcast]);
+            $rss = Rss::find($podcast->getRssId());
+
+            return view('podcast.view', ['podcast' => $podcast, 'rss' => $rss]);
 
         }
     }

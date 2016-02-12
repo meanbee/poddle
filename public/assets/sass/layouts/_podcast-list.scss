@@ -1,0 +1,34 @@
+.podcast-episodes-list {
+
+    .podcast-episode-item {
+        margin: 0.5em 0;
+    }
+
+    .podcast-episode-link {
+        text-align: left;
+    }
+
+    .podcast-episode-name {
+        font-size: 0.8em;
+        margin: 0;
+        text-align: left;
+    }
+}
+
+
+@media (min-width: 900px) {
+    .new-rss,
+    .latest-episodes {
+        display:inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    .new-rss {
+        width: 40%
+    }
+
+    .latest-episodes {
+        margin-right: 5%;
+    }
+}
