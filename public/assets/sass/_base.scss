@@ -187,5 +187,8 @@ button,
     border: 1px solid $greyBlue;
     padding: 0.5em 0.2em;
     margin: 0.2em 0;
-    min-width: 20em;
+
+    @media (min-width: 600px) {
+        min-width: 20em;
+    }
 }
