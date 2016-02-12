@@ -5,9 +5,8 @@
 
 @section('content')
     <section class="main-inner">
-        @foreach($matches as $match)
-            output match.
-        @endforeach
+        <h2>Search Results:</h2>
+        @include('partials/lists/podcast', ['recentPodcasts' => $matches])
     </section>
 @stop
 @section('before_body_end')

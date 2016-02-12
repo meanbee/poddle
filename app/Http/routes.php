@@ -35,4 +35,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/podcast/{id}/{slug}', ['as' => 'podcast.view', 'uses' => 'PodcastController@view']);
 
     Route::post('/search/result', ['as' => 'podcast.search.result', 'uses' => 'PodcastController@searchResult']);
+    Route::get('/search', ['as' => 'podcast.search', 'uses' => 'PodcastController@search']);
 });
