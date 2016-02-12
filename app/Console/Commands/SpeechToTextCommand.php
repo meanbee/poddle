@@ -46,15 +46,17 @@ class SpeechToTextCommand extends Command
 
                     try {
                         $speechToText->recognize(storage_path("app/$fileName"));
+                        $transcriptString = '';
 
                         foreach ($speechToText->getTranscripts() as $transcript) {
-
-                            $podcast->setTranscription($transcript);
-                            $podcast->setStatus(Podcast::STATUS_AUDIO_TO_TEXT_CONVERTED);
-                            $podcast->save();
-
-                            break;
+                            $transcriptString .= $transcript;
                         }
+
+                        $podcast->setTranscription($transcriptString);
+                        $podcast->setStatus(Podcast::STATUS_AUDIO_TO_TEXT_CONVERTED);
+                        $podcast->save();
+                        $speechToText->deleteSession();
+
                     } catch (Exception $e) {
 
                         $podcast->setStatus(Podcast::STATUS_AUDIO_TO_TEXT_CONVERSION_FAILED);
