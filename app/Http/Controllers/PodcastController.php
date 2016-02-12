@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Console\Commands\ConceptInsightsCommand;
 use App\Models\Podcast;
+use App\Models\Rss;
 use Brideo\IbmWatson\Ibm\ConceptInsights\Corpus;
 use Brideo\IbmWatson\Ibm\Config;
 use Brideo\IbmWatson\Ibm\Factory\ConceptInsights\CorpusFactory;
@@ -30,7 +31,9 @@ class PodcastController extends Controller
                 return redirect(route('podcast.view', ['id' => $podcast->getId(), 'slug' => $podcast->getSlug()]));
             }
 
-            return view('podcast.view', ['podcast' => $podcast]);
+            $rss = Rss::find($podcast->getRssId());
+
+            return view('podcast.view', ['podcast' => $podcast, 'rss' => $rss]);
 
         }
     }
