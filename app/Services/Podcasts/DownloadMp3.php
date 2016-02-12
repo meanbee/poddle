@@ -6,6 +6,7 @@ use App\Models\Podcast;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Class DownloadMp3
@@ -59,6 +60,8 @@ class DownloadMp3
                     $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
                 }
             } catch (ClientException $e) {
+                $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
+            } catch (RequestException $e) {
                 $podcast->setStatus(Podcast::STATUS_DOWNLOAD_FAILED);
             }
 
