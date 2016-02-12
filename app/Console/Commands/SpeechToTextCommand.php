@@ -35,33 +35,36 @@ class SpeechToTextCommand extends Command
 
         $speechToText = new SpeechToText($config);
 
-        /** @var \Illuminate\Database\Eloquent\Builder $podcasts */
-        $podcasts = Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_FILE_CONVERTED);
-        foreach ($podcasts->get() as $podcast) {
+        Podcast::where(Podcast::COLUMN_STATUS, '=', Podcast::STATUS_FILE_CONVERTED)
+            ->chunk(10, function ($podcasts) use ($speechToText) {
 
-            /** @var Podcast $podcast */
-            $fileName = $podcast->getAttribute(Podcast::COLUMN_CONVERTED_FILE);
-            $speechToText->recognize(storage_path("app/{$fileName}"));
+                /** @var Podcast $podcast */
+                foreach ($podcasts as $podcast) {
 
-            try {
+                    /** @var Podcast $podcast */
+                    $fileName = $podcast->getConvertedFile();
 
-                foreach ($speechToText->getTranscripts() as $transcript) {
+                    try {
+                        $speechToText->recognize(storage_path("app/$fileName"));
 
-                    $podcast->setAttribute(Podcast::COLUMN_TRANSCRIPTION, $transcript);
-                    $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_AUDIO_TO_TEXT_CONVERTED);
-                    $podcast->save();
+                        foreach ($speechToText->getTranscripts() as $transcript) {
 
-                    break;
+                            $podcast->setTranscription($transcript);
+                            $podcast->setStatus(Podcast::STATUS_AUDIO_TO_TEXT_CONVERTED);
+                            $podcast->save();
+
+                            break;
+                        }
+                    } catch (Exception $e) {
+
+                        $podcast->setStatus(Podcast::STATUS_AUDIO_TO_TEXT_CONVERSION_FAILED);
+                        $podcast->save();
+                        $this->error($e->getMessage());
+
+                        continue;
+                    }
                 }
-            } catch (Exception $e) {
-
-                $podcast->setAttribute(Podcast::COLUMN_STATUS, Podcast::STATUS_AUDIO_TO_TEXT_CONVERSION_FAILED);
-                $podcast->save();
-                $this->error($e->getMessage());
-
-                continue;
-            }
-        }
+            });
 
         return $this;
     }
