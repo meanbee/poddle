@@ -379,7 +379,7 @@ class Podcast extends Model
      */
     public function getTranscription()
     {
-        return $this->getAttribute(static::COLUMN_TRANSCRIPTION);
+        return str_replace('%HESITATION', '<br><br>', $this->getAttribute(static::COLUMN_TRANSCRIPTION));
     }
 
     /**

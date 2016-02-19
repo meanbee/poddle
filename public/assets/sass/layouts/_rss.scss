@@ -1,29 +1,4 @@
 .submit-rss {
-    background: $seaBlue;
-    color: $white;
     margin: 5em 0;
-
-    @media (min-width: 600px) {
-        padding: 2em 0;
-    }
-
-    h2 {
-        color: $white;
-        text-align: center;
-    }
-
-    form {
-        text-align: center;
-    }
-
-    input[type="text"] {
-        font-size: 1.39em;
-        padding: 0.5em;
-        vertical-align: middle;
-    }
-
-    .form-group {
-        display: inline-block;
-        margin-right: 0.5em
-    }
+    @include main-input-wrapper();
 }

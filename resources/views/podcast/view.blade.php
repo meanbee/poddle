@@ -21,7 +21,7 @@ Get information on {{ $podcast->getEpisodeName() }} - {{ $podcast->getPodcastNam
 
         <div class="transcription-container">
             <h2>Text Transcription</h2>
-            <p class="podcast-transcription">{{ $podcast->getTranscription() }}</p>
+            <p class="podcast-transcription">{!! $podcast->getTranscription() !!}</p>
         </div>
 
         <ul class="podcast-concepts">

@@ -37,6 +37,7 @@ header[role="banner"] {
 
 .main-inner,
 .header-inner,
+.search-inner,
 .footer-inner {
     @include outer-container();
 
@@ -46,6 +47,10 @@ header[role="banner"] {
 
 .header-inner {
     padding-top: 0;
+}
+
+.search {
+    @include main-input-wrapper();
 }
 
 .main-inner {

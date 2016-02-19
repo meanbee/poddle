@@ -46,7 +46,10 @@ class PodcastController extends Controller
      */
     public function searchResult(Request $request)
     {
-        $matches = (new Search($request->get('search'), false))->search();
+        if(!$keyword = $request->get('search')) {
+            return null;
+        }
+        $matches = (new Search($keyword, false))->search();
 
         return view('cms.result')->with('matches', $matches);
     }

@@ -41,8 +41,7 @@ class Search
     public function search($keyword = null)
     {
         if ($keyword) {
-            $search = new Search($keyword);
-            return $search->search();
+            return (new Search($keyword))->search();
         }
 
         $result = [];

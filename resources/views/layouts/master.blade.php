@@ -42,6 +42,15 @@
             <p class="tagline">The podcast transcriber and concept based search service</p>
         </div>
     </header>
+    <section class="search">
+        <div>
+            <form style="color:black" method="post" class="navbar-form navbar-left" action="{{ URL::to('/search/result') }}" role="search">
+                {{ csrf_field() }}
+                <input type="text" name="search" class="form-control" placeholder="Search for a podcast.">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </section>
     <main role="main">
         @if(Session::has('success'))
             <div class="alert-box success">
